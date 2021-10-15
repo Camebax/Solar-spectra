@@ -83,3 +83,28 @@ def create_plot(filepath_pzs,  # Путь к файлу с таблицей по
         plt.savefig('python_spectra/{}/{}'.format(result_dir_name, filename), dpi=400)
         # plt.show()
         return x_data, y_data
+
+
+def get_etalon(wl=0,
+               filepath_etalon='sun_spectra/sun_etalon.txt'
+               ):
+    """Возвращает значение эталонного спектра солнца на длине волны wl"""
+    spec_val_wl = 1
+    x_data = []
+    y_data = []
+    with open(filepath_etalon, "r") as file:
+        for line in file:
+            x_data.append(float(line.split('\t')[0].replace(',', '.')))
+            y_data.append(float(line.split('\t')[1].replace(',', '.')))
+    step = 1
+    for i in range(0, len(x_data)):
+        if 0 <= (wl - x_data[i]) < step:
+            try:
+                derivate = y_data[i + 1] - y_data[i]
+                spec_val_wl = y_data[i] + (wl - x_data[i]) * derivate
+            except IndexError:
+                pass
+            break
+        else:
+            spec_val_wl = y_data[i]
+    return spec_val_wl
