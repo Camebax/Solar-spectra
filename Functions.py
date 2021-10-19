@@ -36,7 +36,7 @@ def get_string_data(filepath_wl, spec_val_num):
 
 def create_plot(filepath_pzs,  # Путь к файлу с таблицей показаний ПЗС
                 filepath_wl,  # Путь к файлу с массивом длин волн
-                rows_num,  # Число строящихся кривых
+                rows_num,  # Число строящихся кривых (число строк в csv файле)
                 spec_val_num,  # Число длин волн, для кот. строятся графики
                 result_dir_name='',  # Имя директории для записи построенных графиков
                 average=True,  # Вкл/откл усреднение по всем кривым
@@ -45,7 +45,8 @@ def create_plot(filepath_pzs,  # Путь к файлу с таблицей по
                 x_lim_low=420,  # Масштабы осей
                 x_lim_high=760,
                 y_lim_low=0,
-                y_lim_high=17000
+                y_lim_high=17000,
+                l_w=0.3  # Толщина линий на графиках
                 ):
     """Строит графики с заданными пар-ми и возвращает массив с массивами x_data и y_data для всех построенных кривых"""
     graphs = []
@@ -58,12 +59,11 @@ def create_plot(filepath_pzs,  # Путь к файлу с таблицей по
             for column in row:
                 y_data.append(int(column.split('.')[0]))
             graphs.append(y_data)
-            plt.plot(x_data, y_data)
-        plt.plot(x_data, y_data)
+            plt.plot(x_data, y_data, linewidth=l_w)
         plt.xlim(x_lim_low, x_lim_high)
         plt.ylim(y_lim_low, y_lim_high)
         plt.title(title)
-        plt.savefig('python_spectra/{}/{}'.format(result_dir_name, filename), dpi=400)
+        plt.savefig('python_spectra/{}/{}'.format(result_dir_name, filename), dpi=500)
         # plt.show()
         return x_data, graphs
 
@@ -76,11 +76,11 @@ def create_plot(filepath_pzs,  # Путь к файлу с таблицей по
                 i += 1
         for i in range(0, len(y_data)):
             y_data[i] = y_data[i] / rows_num
-        plt.plot(x_data, y_data)
+        plt.plot(x_data, y_data, linewidth=l_w)
         plt.xlim(x_lim_low, x_lim_high)
         plt.ylim(y_lim_low, y_lim_high)
         plt.title(title)
-        plt.savefig('python_spectra/{}/{}'.format(result_dir_name, filename), dpi=400)
+        plt.savefig('python_spectra/{}/{}'.format(result_dir_name, filename), dpi=500)
         # plt.show()
         return x_data, y_data
 

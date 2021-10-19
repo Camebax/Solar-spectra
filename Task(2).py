@@ -7,11 +7,12 @@ import matplotlib.pyplot as plt
 x_lim_low = 420
 x_lim_high = 760
 y_lim_low = 0
-y_lim_high = 1.5
+y_lim_high = 4
+l_w = 0.3  # Толщина линий на графиках
 """==================ВОЗВРАЩАЕТ ПРИБОРНЫЕ ФУНКЦИИ ДЛЯ КАЖДОГО ИЗ СЛУЧАЕВ==============="""
 
 """SUN1"""
-with open('python_spectra/Pickles/RIGHT initial sun 1 spectrum.pickle', 'rb') as f:
+with open('python_spectra/Pickles/RIGHT initial sun 1 spectrum', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
@@ -25,13 +26,13 @@ y_et_max = max(y_data_etalon)
 for i in range(0, len(x_data)):
     y_data[i] = y_data[i]/y_max
     y_data_etalon[i] = y_data_etalon[i]/y_et_max
-    y_data[i] = y_data[i] / y_data_etalon[i]
+    y_data[i] = y_data_etalon[i] / y_data[i]
 
 plt.clf()
 plt.xlim(x_lim_low, x_lim_high)
 plt.ylim(y_lim_low, y_lim_high)
-# plt.plot(x_data, y_data_etalon)
-plt.plot(x_data, y_data)
+# plt.plot(x_data, y_data_etalon, linewidth=l_w)
+plt.plot(x_data, y_data, linewidth=l_w)
 plt.title('Приборная функция sun1')
 plt.savefig('python_spectra/Senscurves/{}'.format('Senscurve sun1'), dpi=400)
 plt.show()
@@ -40,7 +41,7 @@ with open('python_spectra/Pickles/Senscurve sun1', 'wb') as f:
 
 
 """SUN2"""
-with open('python_spectra/Pickles/RIGHT initial sun 2 spectrum.pickle', 'rb') as f:
+with open('python_spectra/Pickles/RIGHT initial sun 2 spectrum', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
@@ -54,14 +55,14 @@ y_et_max = max(y_data_etalon)
 for i in range(0, len(x_data)):
     y_data[i] = y_data[i]/y_max
     y_data_etalon[i] = y_data_etalon[i]/y_et_max
-    y_data[i] = y_data[i] / y_data_etalon[i]
+    y_data[i] = y_data_etalon[i] / y_data[i]
 
 plt.clf()
 plt.xlim(x_lim_low, x_lim_high)
 plt.ylim(y_lim_low, y_lim_high)
 
-# plt.plot(x_data, y_data_etalon)
-plt.plot(x_data, y_data)
+# plt.plot(x_data, y_data_etalon, linewidth=l_w)
+plt.plot(x_data, y_data, linewidth=l_w)
 plt.title('Приборная функция sun2')
 plt.savefig('python_spectra/Senscurves/{}'.format('Senscurve sun2'), dpi=400)
 plt.show()
@@ -70,7 +71,7 @@ with open('python_spectra/Pickles/Senscurve sun2', 'wb') as f:
 
 
 """SUN3"""
-with open('python_spectra/Pickles/RIGHT initial sun 3 spectrum.pickle', 'rb') as f:
+with open('python_spectra/Pickles/RIGHT initial sun 3 spectrum', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
@@ -84,14 +85,14 @@ y_et_max = max(y_data_etalon)
 for i in range(0, len(x_data)):
     y_data[i] = y_data[i]/y_max
     y_data_etalon[i] = y_data_etalon[i]/y_et_max
-    y_data[i] = y_data[i] / y_data_etalon[i]
+    y_data[i] = y_data_etalon[i] / y_data[i]
 
 plt.clf()
 plt.xlim(x_lim_low, x_lim_high)
 plt.ylim(y_lim_low, y_lim_high)
 
-# plt.plot(x_data, y_data_etalon)
-plt.plot(x_data, y_data)
+# plt.plot(x_data, y_data_etalon, linewidth=l_w)
+plt.plot(x_data, y_data, linewidth=l_w)
 plt.title('Приборная функция sun3')
 plt.savefig('python_spectra/Senscurves/{}'.format('Senscurve sun3'), dpi=400)
 plt.show()
@@ -100,7 +101,7 @@ with open('python_spectra/Pickles/Senscurve sun3', 'wb') as f:
 
 
 """SUN4"""
-with open('python_spectra/Pickles/RIGHT initial sun 4 spectrum.pickle', 'rb') as f:
+with open('python_spectra/Pickles/RIGHT initial sun 4 spectrum', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
@@ -114,14 +115,14 @@ y_et_max = max(y_data_etalon)
 for i in range(0, len(x_data)):
     y_data[i] = y_data[i]/y_max
     y_data_etalon[i] = y_data_etalon[i]/y_et_max
-    y_data[i] = y_data[i] / y_data_etalon[i]
+    y_data[i] = y_data_etalon[i] / y_data[i]
 
 plt.clf()
 plt.xlim(x_lim_low, x_lim_high)
 plt.ylim(y_lim_low, y_lim_high)
 
-# plt.plot(x_data, y_data_etalon)
-plt.plot(x_data, y_data)
+# plt.plot(x_data, y_data_etalon, linewidth=l_w)
+plt.plot(x_data, y_data, linewidth=l_w)
 plt.title('Приборная функция sun4')
 plt.savefig('python_spectra/Senscurves/{}'.format('Senscurve sun4'), dpi=400)
 plt.show()
@@ -134,28 +135,28 @@ with open('python_spectra/Pickles/Senscurve sun1', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
+plt.plot(x_data, y_data, linewidth=l_w)
 
-plt.plot(x_data, y_data)
 with open('python_spectra/Pickles/Senscurve sun2', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
-plt.plot(x_data, y_data)
+plt.plot(x_data, y_data, linewidth=l_w)
 
 with open('python_spectra/Pickles/Senscurve sun3', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
-plt.plot(x_data, y_data)
+plt.plot(x_data, y_data, linewidth=l_w)
 
 with open('python_spectra/Pickles/Senscurve sun4', 'rb') as f:
     plot_info = pickle.load(f)
 x_data = plot_info[0]
 y_data = plot_info[1]
-plt.plot(x_data, y_data)
+plt.plot(x_data, y_data, linewidth=l_w)
 
 plt.title('Все приборные функции')
 plt.xlim(x_lim_low, x_lim_high)
 plt.ylim(y_lim_low, y_lim_high)
-plt.savefig('python_spectra/Senscurves/{}'.format('All_senscurves'), dpi=400)
+plt.savefig('python_spectra/Senscurves/{}'.format('All_senscurves'), dpi=500)
 plt.show()
